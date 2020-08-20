@@ -260,7 +260,7 @@ class Home extends Component {
               <ResponsiveGridLayout className="react-grid-layout" layouts={this.state.layouts} margin={[20, 20]}
                                     breakpoints={{lg: 1000, md: 796, sm: 568, xs: 280, xxs: 0}}
                                     cols={{lg: 6, md: 3, sm: 2, xs: 1, xxs: 1}}
-                                    compactType={'horizontal'} rowHeight={50}
+                                    compactType={'vertical'} rowHeight={50}
                                     draggableHandle={'.draggable'}
                                     onLayoutChange={(layout, layouts) => { this.setState({layouts: layouts})} }
               >
