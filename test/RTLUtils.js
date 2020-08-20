@@ -21,6 +21,8 @@ import ConfigMockResponseUpdated from '../__mocks__/configs_updated.json';
 import PodsMockResponse from '../__mocks__/pods.json';
 import Error409 from '../__mocks__/409.json';
 import Error404 from '../__mocks__/404.json';
+import NodesMockResponse from '../__mocks__/nodes.json';
+import NodesMetricsMockResponse from '../__mocks__/nodes_metrics.json';
 
 export function setup_login() {
   return render(
@@ -41,6 +43,10 @@ export function generalHomeGET(url) {
     return Promise.resolve(new Response(JSON.stringify({body: ConfigMockResponse})));
   } else if (url === 'http://localhost:3001/pod/') {
     return Promise.resolve(new Response(JSON.stringify({body: PodsMockResponse})));
+  } else if (url === 'http://localhost:3001/nodes') {
+    return Promise.resolve(new Response(JSON.stringify({body: NodesMockResponse})));
+  } else if (url === 'http://localhost:3001/metrics/nodes') {
+    return Promise.resolve(new Response(JSON.stringify(NodesMetricsMockResponse)));
   }
 }
 
@@ -109,6 +115,10 @@ export function mockCRDAndViewsExtended(error, method, crd, view) {
         ConfigMockResponse, null, ConfigMockResponseUpdated);
     } else if (req.url === 'http://localhost:3001/pod/') {
       return Promise.resolve(new Response(JSON.stringify({body: PodsMockResponse})));
+    } else if (req.url === 'http://localhost:3001/nodes') {
+      return Promise.resolve(new Response(JSON.stringify({body: NodesMockResponse})));
+    } else if (req.url === 'http://localhost:3001/metrics/nodes') {
+      return Promise.resolve(new Response(JSON.stringify(NodesMetricsMockResponse)));
     }
   })
 }

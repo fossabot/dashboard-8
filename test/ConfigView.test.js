@@ -12,6 +12,9 @@ import ApiManager from '../src/services/__mocks__/ApiManager';
 import { MemoryRouter } from 'react-router-dom';
 import React from 'react';
 import ConfigView from '../src/views/ConfigView';
+import NodesMockResponse from '../__mocks__/nodes.json';
+import NodesMetricsMockResponse from '../__mocks__/nodes_metrics.json';
+import ConfigMockResponse from '../__mocks__/configs.json';
 
 function mocks(error, get){
   fetch.mockResponse(req => {
@@ -42,6 +45,10 @@ function mocks(error, get){
           return Promise.resolve(new Response(JSON.stringify({ body: ClusterConfigMockResponseMod })))
         }
       }
+    } else if (req.url === 'http://localhost:3001/nodes') {
+      return Promise.resolve(new Response(JSON.stringify({body: NodesMockResponse})));
+    } else if (req.url === 'http://localhost:3001/metrics/nodes') {
+      return Promise.resolve(new Response(JSON.stringify(NodesMetricsMockResponse)));
     }
   })
 }
